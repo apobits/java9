@@ -1,0 +1,4 @@
+--patch-module
+apo.java.practice=_
+--add-reads
+apo.java.practice=ALL-UNNAMED
