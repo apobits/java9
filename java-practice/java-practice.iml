@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="apo.greeting" exported="" />
     <orderEntry type="library" name="Maven: junit:junit:3.8.2" level="project" />
   </component>
 </module>
