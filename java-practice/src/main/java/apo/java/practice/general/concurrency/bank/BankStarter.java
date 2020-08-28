@@ -1,34 +1,35 @@
 package apo.java.practice.general.concurrency.bank;
 
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class BankStarter {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws InterruptedException {
 	var bank = new Bank();
 	double delay = 10000;
 	double maxAmount = 1000;
-
-	Runnable runnable1 = () -> {
-	    for (int i = 0; i < 5; i++) {
-		bank.transferMoney(0, 1, (int) (maxAmount * Math.random()));
-		try {
-		    Thread.sleep((long) (delay * Math.random()));
-		} catch (InterruptedException e) {
-		    e.printStackTrace();
-		}
-	    }
+	int maxAccounts = 5;
+	ThreadGroup threadGroup = new ThreadGroup("My group");
+	Runnable runnable = () -> {
+	    bank.transferMoney((int) (maxAccounts * Math.random()), (int) (maxAccounts * Math.random()),
+			    (int) (maxAmount * Math.random()));
 	};
 
-	Runnable runnable2 = () -> {
-	    for (int i = 0; i < 5; i++) {
-		bank.transferMoney(1, 0, (int) (maxAmount * Math.random()));
-		try {
-		    Thread.sleep((long) (delay * Math.random()));
-		} catch (InterruptedException e) {
-		    e.printStackTrace();
-		}
-	    }
-	};
+	for (int i = 0; i < 100; i++) {
+	    new Thread(threadGroup,runnable).start();
+	}
 
-	new Thread(runnable1).start();
-	new Thread(runnable2).start();
+	var threadArray =  new Thread[100];
+	threadGroup.enumerate(threadArray);
+	Arrays.stream(threadArray).forEach(t-> {
+	    try {
+		t.join();
+	    } catch (InterruptedException e) {
+		e.printStackTrace();
+	    }
+	});
+	System.out.println(bank.getTotalBalances());
+	System.out.println(bank.getSumTotalBalances());
     }
 }
