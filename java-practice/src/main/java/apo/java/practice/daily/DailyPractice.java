@@ -1,39 +1,27 @@
 package apo.java.practice.daily;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class DailyPractice {
 
-    public static void main(String[] args) throws IOException {
-
+    public static void main(String[] args) {
+	var array = new int[] { 2, 1, 4, 9, 3, 7, 8 };
+	insertionSort(array);
+	System.out.println(Arrays.toString(array));
     }
+
+    static void insertionSort(int[] array) {
+	var index = -1;
+	while (++index < array.length - 1) {
+	    int tempIndex = index;
+	    while (tempIndex >= 0 && array[tempIndex + 1] < array[tempIndex]) {
+		var temp = array[tempIndex];
+		array[tempIndex] = array[tempIndex + 1];
+		array[tempIndex + 1] = temp;
+		tempIndex--;
+	    }
+	}
+    }
+
 }
 
-class Person {
-    private String name;
-    private int id;
-
-    public Person(String name, int id) {
-	this.name = name;
-	this.id = id;
-    }
-
-    public String getName() {
-	return name;
-    }
-
-    public void setName(String name) {
-	this.name = name;
-    }
-
-    public int getId() {
-	return id;
-    }
-
-    public void setId(int id) {
-	this.id = id;
-    }
-}
