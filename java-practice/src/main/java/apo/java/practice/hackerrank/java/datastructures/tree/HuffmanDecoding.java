@@ -1,0 +1,52 @@
+package apo.java.practice.hackerrank.java.datastructures.tree;
+
+public class HuffmanDecoding {
+
+    public void decode(String s, Node root) {
+	var trueRoot = root;
+	for (String bit : s.split("")) {
+	    if (bit.equals("1")) {
+		root = root.right;
+	    } else {
+		root = root.left;
+	    }
+	    if (root.left == null && root.right == null) {
+		System.out.print(root.data);
+		root = trueRoot;
+	    }
+	}
+    }
+}
+
+abstract class Node implements Comparable<Node> {
+    public int frequency; // the frequency of this tree
+    public char data;
+    public Node left, right;
+
+    public Node(int freq) {
+	frequency = freq;
+    }
+
+    // compares on the frequency
+    public int compareTo(Node tree) {
+	return frequency - tree.frequency;
+    }
+}
+
+class HuffmanLeaf extends Node {
+
+    public HuffmanLeaf(int freq, char val) {
+	super(freq);
+	data = val;
+    }
+}
+
+class HuffmanNode extends Node {
+
+    public HuffmanNode(Node l, Node r) {
+	super(l.frequency + r.frequency);
+	left = l;
+	right = r;
+    }
+
+}

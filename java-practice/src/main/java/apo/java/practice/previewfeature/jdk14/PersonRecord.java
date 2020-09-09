@@ -5,7 +5,7 @@ package apo.java.practice.previewfeature.jdk14;
 //Records do not generate getters and setters, it's properties are accessed by methods called as the same as the properties(By the compiler)
 public record PersonRecord(String name, String lastName) {
 
-    //Records can have static fields, they cannot have instance fields/intiables
+    //Records can have static fields, they cannot have instance fields
     public static String surName;
 
     //Records can have compact constructors, canonical constructors or custom constructor
