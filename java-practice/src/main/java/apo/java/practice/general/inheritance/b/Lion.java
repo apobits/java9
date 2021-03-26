@@ -1,6 +1,7 @@
 package apo.java.practice.general.inheritance.b;
 
 import apo.java.practice.general.inheritance.a.Animal;
+import apo.java.practice.general.inheritance.a.Eagle;
 
 public class Lion extends Animal {
 
@@ -10,7 +11,6 @@ public class Lion extends Animal {
 
 	//protected fields are accessible in any subclass from other package
 	System.out.println(speed);
-
 	//public fields are accessible in any subclass from other package
 	System.out.println(aggresivness);
 
