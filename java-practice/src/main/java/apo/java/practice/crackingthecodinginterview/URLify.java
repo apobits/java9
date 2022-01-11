@@ -2,30 +2,24 @@ package apo.java.practice.crackingthecodinginterview;
 
 public class URLify {
     public static void main(String[] args) {
-	System.out.println(urlify("hello there ."));
+        System.out.println(urlify("Hello there .    ", 13));
     }
-    public static String urlify(String s) {
-	var chars = s.toCharArray();
-	int spaces = 0;
-	int stringIndex = -1;
-	while (++stringIndex < chars.length) {
-	    if (chars[stringIndex] == ' ') {
-		spaces++;
-	    }
-	}
-	int newCharsIndex = s.length() + (spaces * 2);
-	var newChars = new char[newCharsIndex];
-	stringIndex = s.length();
-	while (--stringIndex >= 0) {
-	    if (chars[stringIndex] == ' ') {
-		newChars[--newCharsIndex] = '0';
-		newChars[--newCharsIndex] = '2';
-		newChars[--newCharsIndex] = '%';
-	    } else {
-		newChars[--newCharsIndex] = chars[stringIndex];
-	    }
-	}
-	return new String(newChars);
+
+    public static String urlify(String s, int trueLength) {
+        var chars = s.toCharArray();
+        int arrayIndex = s.length() - 1;
+        int lengthIndex = trueLength - 1;
+        while (arrayIndex != lengthIndex && arrayIndex >= 0) {
+            if (chars[lengthIndex] == ' ') {
+                chars[arrayIndex--] = '0';
+                chars[arrayIndex--] = '2';
+                chars[arrayIndex--] = '%';
+            } else {
+                chars[arrayIndex--] = chars[lengthIndex];
+            }
+            lengthIndex--;
+        }
+        return new String(chars);
     }
 }
 //testing spaces.

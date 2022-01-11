@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/apo-model/apo-model.iml" filepath="$PROJECT_DIR$/apo-model/apo-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/greeting-module/greeting-module.iml" filepath="$PROJECT_DIR$/greeting-module/greeting-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hello-world-module/hello-world-module.iml" filepath="$PROJECT_DIR$/hello-world-module/hello-world-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-practice/java-practice.iml" filepath="$PROJECT_DIR$/java-practice/java-practice.iml" />
     </modules>
   </component>
